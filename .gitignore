@@ -3,3 +3,5 @@ migration
 *.txt
 config.py
 .vscode
+Pipfile
+Pipfile.lock
