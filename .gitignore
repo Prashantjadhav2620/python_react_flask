@@ -5,3 +5,4 @@ config.py
 .vscode
 Pipfile
 Pipfile.lock
+/node_modules
