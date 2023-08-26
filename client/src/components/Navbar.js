@@ -1,8 +1,57 @@
-// import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth ,logout } from "../auth"; 
+
+const LoggedInLinks = () => {
+  return (
+    <>
+      <li className="nav-item">
+        <Link className="nav-link active" aria-current="page" to="/">
+          Home
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link active" to="/create_recipe">
+          Create Recipes
+        </Link>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link active" href="#">
+          Log Out
+        </a>
+      </li>
+    </>
+  );
+};
+
+const LoggedOutLinks = () => {
+  return (
+    <>
+      <li className="nav-item">
+        <Link className="nav-link active" aria-current="page" to="/">
+          Home
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link active" to="/signup">
+          Sign Up
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link active" to="/login">
+          Log In
+        </Link>
+      </li>
+    </>
+  );
+};
 
 const Navbar = () => {
+  const [logged] = useAuth(); // Assuming useAuth returns a boolean value indicating whether the user is logged in or not
+  console.log(logged,"========================================="); 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -22,31 +71,7 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link active" to="/signup">
-                Sign Up
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link active" to="/login">
-                Login
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link active" to="/create_recipe">
-                Create Recipes
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link active" to="/">
-                Log Out
-              </Link>
-            </li>
+            {logged ? <LoggedInLinks /> : <LoggedOutLinks />}
           </ul>
         </div>
       </div>

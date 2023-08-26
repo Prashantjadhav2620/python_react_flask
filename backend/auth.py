@@ -5,7 +5,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import JWTManager,create_access_token,create_refresh_token,jwt_required
 from flask_jwt_extended import get_jwt_identity
 
-
 auth_ns=Namespace('auth',description='A namespace for our Authentication')
 
 signup_model=auth_ns.model(
@@ -33,8 +32,7 @@ class SignUp(Resource):
         db_user = User.query.filter_by(username=username).first()
         
         if db_user is not None:
-            return jsonify(message=f"User with username {username} already exist"),400
-            
+            return make_response(jsonify({"message":f"User with username {username} already exist"}),400)            
         
         new_user=User(
             username = data.get('username'),
@@ -45,8 +43,6 @@ class SignUp(Resource):
         
         new_user.save()        
         return make_response(jsonify({"message":" User created successfuly!!"}),201)
-
-
 
         
 

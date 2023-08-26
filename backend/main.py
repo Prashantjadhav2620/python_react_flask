@@ -13,14 +13,14 @@ def create_app(config):
     app = Flask(__name__)
     CORS(app)
     app.config.from_object(config)
-    
+
     db.init_app(app)
 
     migrate = Migrate(app, db)
     JWTManager(app)
 
     api = Api(app, doc="/docs")
-    
+
     api.add_namespace(recipe_ns)
     api.add_namespace(auth_ns)
 
@@ -43,14 +43,13 @@ def create_app(config):
 # api = Api(app, doc="/docs")
 # db.init_app(app)
 
+
 # @api.route('/hello')
 # class HelloResource(Resource):
 #     def get(self):
 #         return {"message": "Hello World"}
 
+
 # @app.shell_context_processor
 # def make_shell_context():
-#     return {
-#         "db": db,
-#         "Recipe": Recipe
-#     }
+#     return {'db': db, 'Recipe': Recipe}
