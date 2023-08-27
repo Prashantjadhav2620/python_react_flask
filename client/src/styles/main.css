@@ -9,3 +9,17 @@
     margin: auto;
     width: 80%;
 }
+
+.recipe{
+    margin-top: 20px;
+    margin-left: 5%;
+    margin-right: 5%;
+    /* margin-left: 40px;
+    margin-right: 40px; */
+}
+
+.listofrecipes{
+    margin-left: 5%;
+    /* margin-left: 40px; */
+
+}
